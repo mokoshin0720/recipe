@@ -1,0 +1,7 @@
+{% include 'base.html' %}
+
+<p>Homeだよ</p>
+<p>{{ user.user_name }}でログインしてるよ</p>
+<p>メアド{{ user.email }}だよ</p>
+
+<a href="{% url 'signup' %}">会員登録</a>
