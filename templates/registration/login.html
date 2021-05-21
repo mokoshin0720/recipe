@@ -1,0 +1,12 @@
+{% include "base.html" %}
+
+{% block content %}
+
+    <h1>ログインフォーム画面</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">ログイン</button>
+    </form>
+    
+{% endblock content %}
