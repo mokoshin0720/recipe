@@ -1,0 +1,9 @@
+{% include "base.html" %}
+
+{% block content %}
+{% for recipe in all_recipes %}
+<p>{{ recipe.title }}</p>
+<p>{{ recipe.created_at }}</p>
+{% endfor %}
+
+{% endblock content %}

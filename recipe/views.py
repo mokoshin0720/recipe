@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
-from .forms import SignupForm
+from .forms import RecipeForm, SignupForm
+from .models import Recipe
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -25,3 +26,19 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'signup.html', {"form": form})
+
+def list(request):
+    all_recipes = Recipe.objects.order_by('-created_at')
+    return render(request, 'list.html', {"all_recipes": all_recipes})
+
+def create(request):
+    if request.method == "POST":
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('index')
+    else:
+        form = RecipeForm
+    return render(request, 'create.html', {'form':form})

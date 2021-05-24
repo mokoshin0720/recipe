@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from django.contrib.auth import get_user, get_user_model
 
 class MyUserManager(BaseUserManager):
     def create_user(self, email, user_name, password=None):
@@ -55,3 +56,17 @@ class MyUser(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+class Recipe(models.Model):
+    title = models.CharField(max_length=20,
+                             verbose_name='料理名',
+                             )
+    author = models.ForeignKey(get_user_model(),
+                               on_delete=models.CASCADE,
+                               verbose_name='投稿者',
+                               )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
