@@ -4,13 +4,8 @@ from django.db.models import query
 from .models import MyUser, Recipe, Tag
 
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(
-
-    )
-
-    user_name = forms.CharField(
-
-    )
+    email = forms.EmailField()
+    user_name = forms.CharField()
 
     class Meta:
         model = MyUser

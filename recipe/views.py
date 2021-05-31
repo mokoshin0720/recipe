@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
 from .forms import RecipeForm, SignupForm
-from .models import Recipe
+from .models import Recipe, Tag
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -38,6 +38,10 @@ def create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            tag_list = form.cleaned_data["tags"]
+            for tag in tag_list:
+                t = Tag.objects.get(name=tag)
+                post.tags.add(t)
             return redirect('index')
     else:
         form = RecipeForm
