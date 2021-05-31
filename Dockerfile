@@ -1,6 +1,7 @@
 FROM python:3
 
 ENV PYTHONUNBUFFERED 1
+ENV export PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /development/minimalist
 

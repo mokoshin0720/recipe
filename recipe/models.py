@@ -25,7 +25,6 @@ class MyUserManager(BaseUserManager):
             user_name=user_name,
         )
         user.is_admin = True
-        user.is_staff = True
         user.save(using=self._db)
         return user 
  
@@ -57,6 +56,15 @@ class MyUser(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
+class Tag(models.Model):
+    name = models.CharField(max_length=20,
+                            verbose_name="タグ名")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
 class Recipe(models.Model):
     title = models.CharField(max_length=20,
                              verbose_name='料理名',
@@ -65,6 +73,7 @@ class Recipe(models.Model):
                                on_delete=models.CASCADE,
                                verbose_name='投稿者',
                                )
+    tags = models.ManyToManyField(Tag)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 

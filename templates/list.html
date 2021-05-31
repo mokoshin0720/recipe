@@ -3,7 +3,9 @@
 {% block content %}
 {% for recipe in all_recipes %}
 <p>{{ recipe.title }}</p>
+<p>材料：{% for tag in recipe.tags.all %}{{ tag.name }} {% endfor %}</p>
 <p>{{ recipe.created_at }}</p>
+<hr>
 {% endfor %}
 
 {% endblock content %}
