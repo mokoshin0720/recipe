@@ -121,8 +121,6 @@ LOGIN_REDIRECT_URL = 'index'
 
 STATIC_URL = '/static/'
 
-SECRET_KEY = '__s1fqtws$d9b@$^yqi3xxccq@uley*9g)4huh@$s1r9qbzc9^'
-
 try:
     from .local_settings import *
 except ImportError:

@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.db.models import query
 from .models import MyUser, Recipe, Tag
 
 class SignupForm(UserCreationForm):
@@ -12,8 +11,10 @@ class SignupForm(UserCreationForm):
         fields = ('email', 'user_name', 'password1', 'password2')
 
 class RecipeForm(forms.ModelForm):
+    title = forms.CharField(max_length=20,
+                            required=True)
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
-                                          widget=forms.CheckboxSelectMultiple
+                                          widget=forms.CheckboxSelectMultiple,
     )
 
     class Meta:
