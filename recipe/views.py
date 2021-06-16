@@ -1,6 +1,7 @@
+from collections import namedtuple
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
-from .forms import RecipeForm, SignupForm
+from .forms import RecipeForm, SignupForm, TagSearchForm
 from .models import Recipe, Tag
 from django.contrib.auth.decorators import login_required
 
@@ -46,3 +47,19 @@ def create(request):
     else:
         form = RecipeForm
     return render(request, 'create.html', {'form':form})
+
+def taglist(request):
+    form = TagSearchForm(request.GET)
+    if form.is_valid():
+        tag_list = form.cleaned_data["tags"]
+        recipe_list = tag_search(tag_list)
+        return render(request, 'taglist.html', {'form':form, 'recipe_list':recipe_list})
+    else:    
+        return render(request, 'taglist.html', {'form':form})
+
+# 複数タグからレシピを検索する関数
+def tag_search(tag_list):
+    recipe_list = Recipe.objects.all()
+    for tag in tag_list:
+        recipe_list = recipe_list.filter(tags__name=tag)
+    return recipe_list
