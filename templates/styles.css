@@ -1,0 +1,64 @@
+/*　無印良品見たいな色パレット　*/
+:root {
+    --primary: #9C0F29;
+    --primary-text: #FAF7EB;
+    --body: #FAF7EB;
+    --body-text: #333333;
+    --card-background: #DDDDDD;
+    --button-background: #DDDDDD;
+    --button-text: #333333;
+  }
+  
+  /*　ダークモード見たいな色パレット　*/
+  /* :root {
+    --primary: #1166B5;
+    --primary-text: #ACD4EC;
+    --body: #100F42;
+    --body-text: #ACD4EC;
+    --card-background: #1C1E58;
+  } */
+  
+  .fixed-nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      width: 100%;
+      height: 60px;
+      background-color: var(--primary);
+      color: var(--primary-text);
+  }
+  
+  .fixed-nav-bar a {
+      background-color: var(--button-background); /* Green background */
+      border: none;
+      color: var(--button-text); /* White text */
+      margin: 15px 5px 5px;
+      padding: 4px;
+      float: right; /* Float the buttons side by side */
+  }
+  
+  body {
+      background-color: var(--body);
+      color: var(--body-text);
+      font-family: "新ゴ", "New Gothic", "Helvecita", "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono";
+  }
+  
+  div {
+      /* border: 2px solid #575A4B; */
+      margin: 5px 5px 5px;/* top right/left bottom */
+      padding: 2px 2px 2px 2px;
+      box-sizing: border-box;
+      width: calc(100% - 10px);
+      float:left;
+  }
+  
+  p {
+      margin: 3px 5px 5px 3px;
+  }
+  
+  .recipecard {
+      border: none;
+      padding: 3px;
+      background-color: var(--card-background);
+  }
