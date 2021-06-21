@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="utf-8">
-        <title>ホーム</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock css %}
+
+{% block content %}
         <nav class="fixed-nav-bar" style="border-bottom: 1px solid black">
           <!-- Fixed navigation bar content (when logged in)-->
           <a href="{% url 'logout' %}">ログアウト</a>
@@ -69,5 +69,4 @@
                 ようこそメッセージ
             </div>
         </div>
-    </body>
-</html>
+{% endblock content %}

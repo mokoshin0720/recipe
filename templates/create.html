@@ -1,12 +1,11 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock css %}
 
 {% block content %}
-<head>
-  <link rel="stylesheet" href="styles.css">
-  <meta charset="utf-8">
-  <title>レシピ作成</title>
-</head>
-
 <nav class="fixed-nav-bar" style="border-bottom: 1px solid black">
   <!-- Fixed navigation bar content (when logged in)-->
   <a href="{% url 'logout' %}">ログアウト</a>

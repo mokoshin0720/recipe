@@ -115,11 +115,8 @@ AUTH_USER_MODEL = 'recipe.Myuser'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-STATIC_URL = '/static/'
+STATIC_URL = '/static/css/'
+STATICFILES_DIR = [str(BASE_DIR / 'static')]
 
 try:
     from .local_settings import *

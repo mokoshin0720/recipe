@@ -1,13 +1,11 @@
-{% include "base.html" %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock css %}
 
 {% block content %}
-
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="utf-8">
-    <title>レシピ閲覧</title>
-</head>
-
 <nav class="fixed-nav-bar" style="border-bottom: 1px solid black">
     <!-- Fixed navigation bar content (when logged in)-->
     <a href="{% url 'logout' %}">ログアウト</a>
@@ -15,20 +13,8 @@
     <a href="{% url 'list' %}">レシピ閲覧</a>
     <a href="{% url 'home' %}">ホーム</a>
     <a href="{% url 'taglist' %}">タグ検索</a>
-
-    <!-- Alternate navigation bar content (when logged out)-->
-    <!--
-      <a href="{% url 'login' %}">ログイン</a>
-      <a href="{% url 'signup' %}">会員登録</a>
-      <a href="{% url 'create' %}">レシピ作成</a>
-      <a href="{% url 'list' %}">レシピ閲覧</a>
-      <a href="{% url 'home' %}">ホーム</a>
-      <a href="{% url 'taglist' %}">タグ検索</a>
-    -->
     <div style="float:right; width:260px; margin-top:15px">サーチ <input id="search"></div>
-    <h1 style="float:left; margin-left:5px;">
-      レシピアプリ
-    </h1>
+    <h1 style="float:left; margin-left:5px;">レシピアプリ</h1>
 </nav>
 <h1>
     <br> <!-- to provide a space below the top navbar -->
