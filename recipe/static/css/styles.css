@@ -17,6 +17,30 @@
     --body-text: #ACD4EC;
     --card-background: #1C1E58;
   } */
+
+  .search_container{
+    box-sizing: border-box;
+    margin-top: 10px;
+    float: right;
+  }
+  .search_container input[type="text"]{
+    background: #ccddf5;
+    border: none;
+    height: 35px;
+  }
+  .search_container input[type="text"]:focus {
+    outline: 0;
+  }
+  .search_container input[type="submit"]{
+    cursor: pointer;
+    font-family: FontAwesome;
+    border: none;
+    background: #3879D9;
+    color: #fff;
+    outline : none;
+    width: 3.0em;
+    height: 37px;
+  }
   
   .fixed-nav-bar {
       position: fixed;
