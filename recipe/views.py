@@ -1,11 +1,13 @@
 from collections import namedtuple
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login
 from .forms import RecipeForm, SignupForm, TagSearchForm
 from .models import Recipe, Tag
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+'''
+About home
+'''
 def index(request):
     user = request.user
     return render(request, 'index.html', {'user': user})
@@ -14,6 +16,9 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
+'''
+About User
+'''
 def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
@@ -28,6 +33,9 @@ def signup(request):
         form = SignupForm()
     return render(request, 'signup.html', {"form": form})
 
+'''
+About recipe
+'''
 def list(request):
     all_recipes = Recipe.objects.order_by('-created_at')
     return render(request, 'list.html', {"all_recipes": all_recipes})
@@ -63,3 +71,8 @@ def tag_search(tag_list):
     for tag in tag_list:
         recipe_list = recipe_list.filter(tags__name=tag)
     return recipe_list
+
+def delete(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    recipe.delete()
+    return redirect(request.META['HTTP_REFERER'])
