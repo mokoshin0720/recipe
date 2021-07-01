@@ -21,6 +21,9 @@
 </h1>
 {% for recipe in all_recipes %}
 <p>タイトル：{{ recipe.title }}</p>
+{% if recipe.main_image != None %}
+<img width="100%" height="100%" src="{{ recipe.main_image.url }}">
+{% endif %}
 <p>手順1 : {{ recipe.process1 }}</p>
 {% if recipe.process2 != None %}
 <p>手順2 : {{ recipe.process2 }}</p>

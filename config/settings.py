@@ -118,6 +118,9 @@ LOGIN_REDIRECT_URL = 'index'
 STATIC_URL = '/static/css/'
 STATICFILES_DIR = [str(BASE_DIR / 'static')]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 try:
     from .local_settings import *
 except ImportError:

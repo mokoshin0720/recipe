@@ -42,7 +42,7 @@ def list(request):
 
 def create(request):
     if request.method == "POST":
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user

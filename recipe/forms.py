@@ -22,7 +22,7 @@ class RecipeForm(forms.ModelForm):
                                 required=False)
     class Meta:
         model = Recipe
-        fields = ('title', 'tags', 'process1', 'process2')
+        fields = ('title', 'tags', 'main_image', 'process1', 'process2')
 
 class TagSearchForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),

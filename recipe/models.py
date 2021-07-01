@@ -66,22 +66,32 @@ class Tag(models.Model):
         return self.name
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=20,
-                             verbose_name='料理名',
-                             )
-    author = models.ForeignKey(get_user_model(),
-                               on_delete=models.CASCADE,
-                               verbose_name='投稿者',
-                               )
+    title = models.CharField(
+        max_length=20,
+        verbose_name='料理名',
+        )
+
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        verbose_name='投稿者',
+        )
+
     tags = models.ManyToManyField(Tag)
 
-    process1 = models.CharField(max_length=150,
-                                verbose_name="手順1")
+    main_image = models.ImageField(upload_to='', blank=True, null=True)
 
-    process2 = models.CharField(max_length=150,
-                                verbose_name="手順2",
-                                blank=True,
-                                null=True)
+    process1 = models.CharField(
+        max_length=150,
+        verbose_name="手順1"
+        )
+
+    process2 = models.CharField(
+        max_length=150,
+        verbose_name="手順2",
+        blank=True,
+        null=True
+        )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
