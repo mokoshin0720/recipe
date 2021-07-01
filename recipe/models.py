@@ -74,6 +74,15 @@ class Recipe(models.Model):
                                verbose_name='投稿者',
                                )
     tags = models.ManyToManyField(Tag)
+
+    process1 = models.CharField(max_length=150,
+                                verbose_name="手順1")
+
+    process2 = models.CharField(max_length=150,
+                                verbose_name="手順2",
+                                blank=True,
+                                null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 

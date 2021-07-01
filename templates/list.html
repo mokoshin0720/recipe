@@ -20,26 +20,17 @@
     <br> <!-- to provide a space below the top navbar -->
 </h1>
 {% for recipe in all_recipes %}
-<p>{{ recipe.title }}</p>
+<p>タイトル：{{ recipe.title }}</p>
+<p>手順1 : {{ recipe.process1 }}</p>
+{% if recipe.process2 != None %}
+<p>手順2 : {{ recipe.process2 }}</p>
+{% endif %}
 <p>材料：{% for tag in recipe.tags.all %}{{ tag.name }} /{% endfor %}</p>
 <p>{{ recipe.created_at }}</p>
 <button type="button" class="btn btn-sm btn-outline-secondary delete_btn" delete_id="{{ recipe.pk }}">削除する</button>
 <hr>
 {% endfor %}
 
-<script>
-    $(".delete_btn").on("click", function() {
-    if(!confirm('本当に削除しますか？')){
-      return false;
-    }else{
-      var delete_id = $(this).attr('delete_id')
-      console.log(delete_id)
-      var index = '{% url 'index' %}'
-      var url = index+'delete/'+delete_id
-      location.href= url
-      alert("削除しました。")
-    }
-  });
-</script>
+<script src="{% static 'js/delete_recipe.js' %}"></script>
 
 {% endblock content %}

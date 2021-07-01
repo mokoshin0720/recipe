@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import widgets
 from .models import MyUser, Recipe, Tag
 
 class SignupForm(UserCreationForm):
@@ -15,12 +14,15 @@ class RecipeForm(forms.ModelForm):
     title = forms.CharField(max_length=20,
                             required=True)
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
-                                          widget=forms.CheckboxSelectMultiple,
-    )
+                                        widget=forms.CheckboxSelectMultiple,)
+    process1 = forms.CharField(max_length=150, 
+                                required=True)
 
+    process2 = forms.CharField(max_length=150, 
+                                required=False)
     class Meta:
         model = Recipe
-        fields = ('title', 'tags')
+        fields = ('title', 'tags', 'process1', 'process2')
 
 class TagSearchForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
