@@ -1,7 +1,17 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registration/logged_out.css' %}">
+{% endblock css %}
 {% block content %}
-    <h1>ログアウト画面</h1>
-    <p>ログアウトしました</p>
-    <p><a href="{% url 'login' %}">ログイン画面へ</a></p>
+<div class="form-wrapper">
+    <h1>You logged out</h1>
+    <form>
+        <div class="form-footer">
+            <p><a href="{% url 'login' %}">ログイン画面へ</a></p>
+            <p><a href="{% url 'index' %}">indexへ戻る</a></p>
+        </div>
+    </form>
+</div>
 {% endblock content %}

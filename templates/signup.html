@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock css %}
 {% block content %}
+<div class="form-wrapper">
   <h2>ユーザー登録</h2>
   <main class="form-signin">
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
+      <div class="form-item">
         {{ field }}
         {% if field.help_text %}
           <small style="color: grey">{{ field.help_text }}</small>
@@ -15,12 +19,15 @@
         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>
         {% endfor %}
-      </p>
+      </div>
     {% endfor %}
-    <div>
-    <button type="submit">ユーザー登録</button>
+    <div class="button-panel">
+      <input type="submit" class="button" title="ユーザー登録" value="ユーザー登録"></input>
     </div>
-    <a href="{% url 'index' %}">戻る</a>
+    <div class="form-footer">
+      <a href="{% url 'index' %}">戻る</a>
+    </div>
   </form>
   </main>
+</div>
 {% endblock %}

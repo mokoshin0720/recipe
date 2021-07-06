@@ -1,0 +1,92 @@
+:root {
+    --body: #E9E9E9;
+    --body-text: #5E5E5E;
+    --body-font: 400 87.5%/1.5em 'Open Sans', sans-serif;
+    --button-background: #9C0F29;
+    --button-text: #fff;
+    --button-hover-background: #EE3E52;
+    --form-background: #FAF7EB;
+    --form-font: 'Open Sans', sans-serif;
+    --form-footer-text: #8C8C8C;
+    --form-footer-hover: 1px dotted #8C8C8C;
+    --textbox: #FAFAFA;
+    --textbox-border-bottom-on: 2px solid #C2C5C7;
+    --textbox-border-bottom-off: 2px solid #3F8ECF;
+  }
+  /* Simple Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* body */
+  body {
+    background: var(--body);
+    color: var(--body-text);
+    font: var(--body-font);
+  }
+  /* Form Layout */
+  .form-wrapper {
+    background: var(--form-background);
+    margin: 3em auto;
+    padding: 0 1em;
+    /* max-width: 370px; */
+    width: 300px;
+    height: 400px;
+  }
+  h1 {
+    text-align: center;
+    padding: 1em 0;
+  }
+  form {
+    padding: 0 1.5em;
+  }
+  .form-item {
+    margin-bottom: 0.75em;
+    width: 100%;
+  }
+  .form-item input {
+    background: var(--textbox);
+    border: none;
+    border-bottom: var(--textbox-border-bottom-on);
+    color: #666;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    height: 50px;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-item input:focus {
+    border-bottom: var(--textbox-border-bottom-off);
+    outline: none;
+  }
+  .button-panel {
+    margin: 2em 0 0;
+    width: 100%;
+  }
+  .button-panel .button {
+    background: var(--button-background);
+    border: none;
+    color: var(--button-text);
+    cursor: pointer;
+    height: 50px;
+    font-family: var(--form-font);
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 100%;
+  }
+  .button:hover {
+    background: var(--button-hover-background);
+  }
+  .form-footer {
+    font-size: 1em;
+    padding: 2em 0;
+    text-align: center;
+  }
+  .form-footer a {
+    color: var(--form-footer-text);
+    text-decoration: none;
+    transition: border-color 0.3s;
+  }
+  .form-footer a:hover {
+    border-bottom: var(--form-footer-hover);
+  }

@@ -1,12 +1,28 @@
-{% include "base.html" %}
+{% extends 'base.html' %}
 
+{% load static %}
+{% block JavaScript %}
+<!-- <script src="{% static 'js/registration/login.js' %}"></script> -->
+{% endblock JavaScript %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registration/login.css' %}">
+{% endblock css %}
 {% block content %}
-
-    <h1>ログインフォーム画面</h1>
+<div class="form-wrapper">
+    <h1>Sign In</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">ログイン</button>
+        <div class="form-item">
+            {{ form.as_p }}
+        </div>
+        <div class="button-panel">
+            <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+        </div>
     </form>
-    
+    <div class="form-footer">
+        <p><a href="{% url 'signup' %}">Create an account</a></p>
+        <p><a href="#">Forgot password?</a></p>
+        <p><a href="{% url 'index' %}">戻る</a></p>
+    </div>
+</div>
 {% endblock content %}

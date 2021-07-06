@@ -3,8 +3,18 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import MyUser, Recipe, Tag
 
 class SignupForm(UserCreationForm):
-    email = forms.EmailField()
-    user_name = forms.CharField()
+    email = forms.EmailField(widget=forms.TextInput(attrs={
+        'placeholder': 'メールアドレス',
+    }))
+    user_name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'ユーザー名',
+    }))
+    password1 = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'パスワード',
+    }))
+    password2 = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'パスワード（確認用）',
+    }))
 
     class Meta:
         model = MyUser
