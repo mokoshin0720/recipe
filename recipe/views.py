@@ -76,3 +76,6 @@ def delete(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     recipe.delete()
     return redirect(request.META['HTTP_REFERER'])
+
+def recipe_page(request):
+    return render(request, 'recipe_page.html')

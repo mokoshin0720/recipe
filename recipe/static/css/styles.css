@@ -86,3 +86,12 @@
       padding: 3px;
       background-color: var(--card-background);
   }
+
+  .grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  .grid-item {
+    width: 100%
+  }

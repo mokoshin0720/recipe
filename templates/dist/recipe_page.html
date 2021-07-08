@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock css %}
+
+{% block content %}
+        <nav class="fixed-nav-bar" style="border-bottom: 1px solid black">
+          <!-- Fixed navigation bar content (when logged in)-->
+          <a href="{% url 'logout' %}">ログアウト</a>
+          <a href="{% url 'create' %}">レシピ作成</a>
+          <a href="{% url 'list' %}">レシピ閲覧</a>
+          <a href="{% url 'home' %}">ホーム</a>
+          <a href="{% url 'taglist' %}">タグ検索</a>
+          <form method="get" action="#" class="search_container" style="float:right;margin-top:10px">
+            <input type="text" size="25" placeholder="　キーワード検索">
+            <input type="submit" value="検索">
+          </form>
+          <h1 style="float:left; margin-left:5px; margin-top:12px">
+            レシピアプリ
+          </h1>
+        </nav>
+        <h1>
+            <br> <!-- to provide a space below the top navbar -->
+        </h1>
+        <div style="margin-left:20%; width:60%">
+            <div id="newsfeed" style="width:76%; float:left">
+                <div id="item1" class="recipecard">
+                    <h2>レシピの名前</h2>
+                    <br>
+                    <div id="image_and_ingredients">
+                        <div id="image" style="padding:0px; width:50%; margin:0px; float:left">この日本語のLorem Ipsumは、tidraso.co.ukの漢字頻度カウントに基づいており、約50%の漢字、25%のひらがな、20%のカタカナ、5%のローマ数字と句読点を含んでいます。カタカナとひらがなは、各段落のランダムな箇所に1〜4文字の文字列で集まっています。ひらがなは文末に多く見られ、1文字ではなく、1～4文字のまとまりで出現します。カタカナは、日本語の文章の中で1文字として現れることはほとんどありませんが、ひらがなはあり得ます。感嘆符と疑問符は、標準のアスキー文字ではなく、「ダブルバイト」です。改良や代替案の提案を歓迎します。
+                        </div>
+                        <div id="ingredients_list" style="padding:0px; margin-left:5%; width:45%; margin:0px; float:right">この日本語のLorem Ipsumは、tidraso.co.ukの漢字頻度カウントに基づいており、約50%の漢字、25%のひらがな、20%のカタカナ、5%のローマ数字と句読点を含んでいます。カタカナとひらがなは、各段落のランダムな箇所に1〜4文字の文字列で集まっています。ひらがなは文末に多く見られ、1文字ではなく、1～4文字のまとまりで出現します。カタカナは、日本語の文章の中で1文字として現れることはほとんどありませんが、ひらがなはあり得ます。感嘆符と疑問符は、標準のアスキー文字ではなく、「ダブルバイト」です。改良や代替案の提案を歓迎します。
+                        </div>
+                    </div>
+                    <div id="instructions" class="grid-container">
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item">5</div>
+                        <div class="grid-item">6</div>
+                        <div class="grid-item">7</div>
+                        <div class="grid-item">8</div>
+                        <div class="grid-item">9</div>
+                      </div>
+                </div>
+            </div>
+            <div id="sidebar" class="recipecard" style="width:20%">
+                ようこそメッセージ
+            </div>
+        </div>
+{% endblock content %}
