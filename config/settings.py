@@ -113,7 +113,7 @@ USE_TZ = True
 AUTH_USER_MODEL = 'recipe.Myuser'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
 
 STATIC_URL = '/static/css/'
 STATICFILES_DIR = [str(BASE_DIR / 'static')]

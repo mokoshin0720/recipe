@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models.query import QuerySet
+from django.http import request
 from .models import MyUser, Recipe, Tag
 
 class SignupForm(UserCreationForm):
@@ -35,10 +37,10 @@ class RecipeForm(forms.ModelForm):
         fields = ('title', 'tags', 'main_image', 'process1', 'process2')
 
 class TagSearchForm(forms.ModelForm):
-    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
-                                          widget=forms.CheckboxSelectMultiple,
-                                          )
-
+    tags = forms.ModelMultipleChoiceField(
+        queryset=Tag.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        )
     class Meta:
         model = Recipe
         fields = ('tags',)

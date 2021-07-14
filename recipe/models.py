@@ -57,8 +57,15 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 
 class Tag(models.Model):
-    name = models.CharField(max_length=20,
-                            verbose_name="タグ名")
+    name = models.CharField(
+        max_length=20,
+        verbose_name="タグ名"
+        )
+    category = models.CharField(
+        max_length=20,
+        verbose_name='カテゴリー',
+        default="テスト",
+    )
     updated_at = models.DateTimeField(auto_now_add=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -79,7 +86,7 @@ class Recipe(models.Model):
 
     tags = models.ManyToManyField(Tag)
 
-    main_image = models.ImageField(upload_to='', blank=True, null=True)
+    main_image = models.ImageField(upload_to='', default='image_init.png')
 
     process1 = models.CharField(
         max_length=150,

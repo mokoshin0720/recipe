@@ -1,6 +1,23 @@
 {% include 'base.html' %}
 
 {% block content %}
+        <nav class="fixed-nav-bar" style="border-bottom: 1px solid black">
+          <!-- Fixed navigation bar content (when logged in)-->
+          <a href="{% url 'logout' %}">ログアウト</a>
+          <a href="{% url 'create' %}">レシピ作成</a>
+          <a href="{% url 'list' %}">レシピ閲覧</a>
+          <a href="{% url 'home' %}">ホーム</a>
+          <a href="{% url 'taglist' %}">タグ検索</a>
+
+          <form method="get" action="#" class="search_container" style="float:right;margin-top:10px">
+            <input type="text" size="25" placeholder="　キーワード検索">
+            <input type="submit" value="検索">
+          </form>
+          <h1 style="float:left; margin-left:5px; margin-top:12px">
+            レシピアプリ
+          </h1>
+        </nav>
+
 <p>インデックスだよ</p>
 <p>{{ user.user_name }}でログインしてるよ</p>
 <p>メアド{{ user.email }}だよ</p>

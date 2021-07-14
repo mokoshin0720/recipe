@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from .forms import RecipeForm, SignupForm, TagSearchForm
 from .models import Recipe, Tag
 from django.contrib.auth.decorators import login_required
+from bs4 import BeautifulSoup
 
 '''
 About home
@@ -40,6 +41,7 @@ def list(request):
     all_recipes = Recipe.objects.order_by('-created_at')
     return render(request, 'list.html', {"all_recipes": all_recipes})
 
+
 def create(request):
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES)
@@ -58,12 +60,20 @@ def create(request):
 
 def taglist(request):
     form = TagSearchForm(request.GET)
+    recipe_list = Recipe.objects.order_by('-created_at')
+    all_tags = Tag.objects.all()
+    category_list = []
+    for tag in all_tags:
+        if tag.category not in category_list:
+            category_list.append(tag.category)
+
     if form.is_valid():
         tag_list = form.cleaned_data["tags"]
         recipe_list = tag_search(tag_list)
-        return render(request, 'taglist.html', {'form':form, 'recipe_list':recipe_list})
+        return render(request, 'taglist.html', {'recipe_list':recipe_list})
+
     else:    
-        return render(request, 'taglist.html', {'form':form})
+        return render(request, 'taglist.html', {'form':form, 'category_list': category_list, 'recipe_list':recipe_list})
 
 # 複数タグからレシピを検索する関数
 def tag_search(tag_list):
