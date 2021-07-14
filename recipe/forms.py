@@ -25,8 +25,6 @@ class SignupForm(UserCreationForm):
 class RecipeForm(forms.ModelForm):
     title = forms.CharField(max_length=20,
                             required=True)
-    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(),
-                                        widget=forms.CheckboxSelectMultiple,)
     process1 = forms.CharField(max_length=150, 
                                 required=True)
 
@@ -34,7 +32,7 @@ class RecipeForm(forms.ModelForm):
                                 required=False)
     class Meta:
         model = Recipe
-        fields = ('title', 'tags', 'main_image', 'process1', 'process2')
+        fields = ('title', 'main_image', 'process1', 'process2')
 
 class TagSearchForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(

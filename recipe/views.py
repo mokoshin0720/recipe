@@ -45,18 +45,25 @@ def list(request):
 def create(request):
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES)
-        if form.is_valid():
+        tag_form = TagSearchForm(request.POST)
+        if form.is_valid() and tag_form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            tag_list = form.cleaned_data["tags"]
+            tag_list = tag_form.cleaned_data["tags"]
             for tag in tag_list:
                 t = Tag.objects.get(name=tag)
                 post.tags.add(t)
-            return redirect('index')
+            return redirect('taglist')
     else:
         form = RecipeForm
-    return render(request, 'create.html', {'form':form})
+        tag_form = TagSearchForm
+        all_tags = Tag.objects.all()
+        category_list = []
+        for tag in all_tags:
+            if tag.category not in category_list:
+                category_list.append(tag.category)
+    return render(request, 'create.html', {'form':form, "tag_form": tag_form, "category_list": category_list})
 
 def taglist(request):
     form = TagSearchForm(request.GET)
